@@ -43,21 +43,57 @@ const testScenarios = [
     moves: [4, 3, 4, 2, 0, 2, 0, 1, 0, 1, 4, 1, 3, 0],
     expectedWinner: "2",
   },
-  //     {
-  //     name: "Game ends in a Draw",
-  //     moves: [
-  //       0, 1, 0, 1, 0, 1,//
-  //        1, 0, 1, 0, 1, 0, // Cols 0 & 1 filled
-  //       //
-  //       2, 3, 2, 3, 2, 3, 3, 2, 3, 2, 3, 2, // Cols 2 & 3 filled
-  //       //
-  //       4, 5, 4, 5, 4, 5, 5, 4, 5, 4, 5, 4, // Cols 4 & 5 filled
-  //       //
-  //       6, 6, 6, 6, 6, 6                   // Col 6 filled (assumes 6x7 board)
-  //     ],
-  //     expectedWinner: null,
-  //     isDraw: true
-  //   }
+  {
+    name: "Game ends in a Draw",
+    moves: [
+      0,
+      1,
+      0,
+      1,
+      0,
+      1, //
+      1,
+      0,
+      1,
+      0,
+      1,
+      0, // Cols 0 & 1 filled
+      //
+      2,
+      3,
+      2,
+      3,
+      2,
+      3,
+      3, //
+      2,
+      3,
+      2,
+      3,
+      2, // Cols 2 & 3 filled
+      //
+      4,
+      5,
+      4,
+      5,
+      4,
+      5, //
+      5,
+      4,
+      5,
+      4,
+      5,
+      4, // Cols 4 & 5 filled
+      //
+      6,
+      6,
+      6,
+      6,
+      6,
+      6, // Col 6 filled (assumes 6x7 board)
+    ],
+    expectedWinner: "Draw",
+  },
 ];
 
 describe("Connect 4 Win Conditions", () => {
@@ -73,7 +109,6 @@ describe("Connect 4 Win Conditions", () => {
         expectedWinner,
         `Scenario "${name}" failed`,
       );
-      //       if (isDraw) assert.strictEqual(game.isGameOver, true);
     });
   });
 });

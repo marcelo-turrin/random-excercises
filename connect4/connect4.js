@@ -21,6 +21,7 @@ class Connect4 {
   #board;
   #currentPlayer;
   #winner;
+  #moves;
 
   constructor() {
     // board should have all slots with empty value
@@ -29,6 +30,7 @@ class Connect4 {
     );
     this.#currentPlayer = Connect4.#P1; // player 1 starts
     this.#winner = null; // null means game not done
+    this.#moves = 0;
   }
 
   /** @returns the winner or 0 if no winner is decided */
@@ -57,16 +59,18 @@ class Connect4 {
 
     // set the color on the slot
     this.#board[row][col] = this.#currentPlayer;
+    this.#moves++;
 
     // Check for winner condition
     if (
-      // this.#checkWinner(row, col)
+      this.#checkWinner(row, col)
       // this.#checkWinnerFunctional(row, col)
-      this.#checkWinnerAlternative(row, col)
+      // this.#checkWinnerAlternative(row, col)
     ) {
       this.#winner = this.#currentPlayer;
+    } else if (this.#moves === Connect4.#ROWS * Connect4.#COLS) {
+      this.#winner = "Draw";
     } else {
-      //TODO  draw??
       //change the player
       this.#currentPlayer =
         this.#currentPlayer === Connect4.#P1 ? Connect4.#P2 : Connect4.#P1;
